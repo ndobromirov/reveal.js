@@ -31,7 +31,6 @@
 			<div class="slides">
 				<section >
           <h2>NoSQL - MongoDB</h2> 
-          
           by <string>Nikolay Dobromirov</string>
           
           <img src="./images/mongodb-logo.jpg" style="border: 0px;"/>
@@ -47,7 +46,7 @@
             ### Some history
             
             - FFW PHP Team Lead (Sofia office).
-            - PHP developer for the last 9-10.
+            - PHP developer for the last 10 years.
           </section>
           
           <section data-markdown>
@@ -72,21 +71,15 @@
           <section data-markdown>
             ### About you
             
-            - Any NoSQL experience?
-            - Any SQL experience? **:]**
-            - Memcached, Redis (K/V)
-            - Solr, ElasticSearch (documents)
-            - Graphs...
-            - Others?
+            Any **MongoDB** experience?
           </section>
-          
         </section>
         
         <section>
           <section data-markdown>
             ### What is MongoDB
 
-            ```
+            ```text
             MongoDB is an open-source document database that is highly
             performant, highly availabille and horizontaly scallabile.
             ```
@@ -102,7 +95,6 @@
             
             *... Enough teasers :D*
           </section>
-          
         </section>
         
         
@@ -112,7 +104,7 @@
           </section>
           
           <section>
-            <h3>SQL (similarities)</h3>
+            <h3>vs SQL</h3>
             <table>
               <tr>
                 <td><strong>MySQL</strong></td>
@@ -127,7 +119,7 @@
               <tr>
                 <td>Table</td>
                 <td>|</td>
-                <td>Collecction</td>
+                <td>Collection</td>
               </tr>
               <tr>
                 <td>Row</td>
@@ -144,11 +136,16 @@
                 <td>|</td>
                 <td>Cursor</td>
               </tr>
+              <tr>
+                <td>Index</td>
+                <td>|</td>
+                <td>Index*</td>
+              </tr>
             </table>
           </section>
           
           <section data-markdown>
-            ### SQL (diffs)
+            ### vs SQL... Continued
             
             - ACID - compromises
             - Data storage (BSON) - async
@@ -174,10 +171,8 @@
               }
             }
             ```
-            
           </section>
-          
-          
+
           <section data-markdown>
             ### Object ID (12 bytes)
             
@@ -191,7 +186,7 @@
             ... When storing MongoDB IDs - use **THIS** not strings!
             
           </section>
-          
+
           <section data-markdown>
             ### Other types
             
@@ -202,32 +197,109 @@
             - Objects
             - ...[and many more](https://docs.mongodb.com/v3.0/reference/bson-types/)
           </section>
-          
-          
+
           <section data-markdown>
-            ### Demo
+            ### Curors
+            
+            - Iterators over query results.
+            - Limit
+            - Skip
           </section>
           
-          
-          
+          <section data-markdown>
+            ## Demo
+            
+            ##### (CRUD)
+          </section>
         </section>
-        
         
         <section>
           <section data-markdown>
+            ### Indexes 101
+            - _id
+            - Secondary ones
+            - Intersections
           </section>
           
           <section data-markdown>
+            ### Index types
+            - Single field
+            - Compound (multi-column)
+            - Multiple (for arrays)
+            - Hash 
+            - Geospatial
+            - Text.
+          </section>
+          
+          <section data-markdown>
+            ### Index properties
+            - TTL
+            - Unique
+            - Sparse
+          </section>
+          
+          <section data-markdown>
+            ### Indexes - summary
+            - Collection scans.
+            - Creation time and locking
+            - Read / Write considerations.
+          </section>
+        </section>
+        
+        <section data-markdown>
+          ### Performance assumptions
+          
+          - Memory mapped files.
+          - Engines: MMAPv1, WiredTiger, Memory
+          - NB: Active working set size. *
+        </section>
+        
+        <section>
+          <section data-markdown>
+            ### High availability
+            - Master-slave replication
+            - Auto fail-over.
+            - Pros (safe)
+            - Cons (100% hardware overhead)
+          </section>
+          
+          <section data-markdown>
+            ### Horizontal scallability
+            - Auto sharding (sharding keys)
+            - Pros - linear cluster scalability.
+            - Cons - complexity.
+          </section>
+          
+          <section data-markdown>
+            ### Highly scalable & available setup
+            ![Highly available sharded cluster](images/mongo-cluster-schema-2.png)
+          </section>
+          
+        </section>
+        
+        <section >
+          <section data-markdown>
+            ### What about PHP
+
+            - **mongo** - legacy, dies with PHP 5.
+            - **mongodb** - is the PHP 5/7+ recommended one.
+          </section>
+          <section data-markdown>
+            ### Recommended PHP extension
+            
+            ![mongodb PHP extension schema](images/mongodb-php-drivers-architecture.png)
+          </section>
+          
+        </section>
+        
+        <section>
+          <section data-markdown>
+            ### Thank you!
+            
+            Questions?
           </section>
         </section>
 
-        <section >
-          <h3>Recommended PHP extension</h3>
-          
-          
-          <img src="images/mongodb-php-drivers-architecture.png" />
-        </section>
-				<section>Slide 2</section>
 			</div>
 		</div>
 

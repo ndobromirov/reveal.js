@@ -38,7 +38,7 @@ Indexes
  - Primary (_id)
  - Secondary
 
-High performance
+High performance (single server)
  - Memory mapped files.
  - Drawbacks.
  - Assumptions.
