@@ -1,0 +1,67 @@
+
+
+Introduction to MongoDB
+
+Abouth the author.
+
+What is MongoDB (official)
+ - MongoDB is an open-source document database that provides high performance, high availability and horizontal scallability.
+
+Document database
+ 
+Comparison with SQL (similarities)
+ - Database : Database
+ - Collection : Table
+ - Document : Row
+ - Property : Column of a row.
+ - Cursor : Result set
+
+Comparison with SQL (differences)
+ - Atomicity, Consistency, Isolation, Durability (ACID)
+ - Storage.
+ - Write conserns
+ - schema management.
+
+Crud examples
+ - create
+ - retreve
+ - update
+ - delete
+
+Cursors
+ - find()
+ - limit
+ - skip
+ - sort
+
+Indexes
+ - Primary (_id)
+ - Secondary
+
+High performance
+ - Memory mapped files.
+ - Drawbacks.
+ - Assumptions.
+
+High availability
+ - Master-slave replication
+ - Auto failover.
+ - Pros
+ - Cons
+
+Horizontal scallability
+ - Auto shartding*
+ - Pros
+ - Cons
+
+Highly scalable + highly available setups.
+ - graph.
+
+So we use PHP
+ - mongo (legacy)
+ - mongodb (limited)
+ - composer require mongodb/mongodb
+
+Questions.
+
+

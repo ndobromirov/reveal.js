@@ -7,7 +7,7 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -20,11 +20,213 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+    
+    <style>
+      img {border: 0px !important};
+    </style>
+    
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
+				<section >
+          <h2>NoSQL - MongoDB</h2> 
+          
+          by <string>Nikolay Dobromirov</string>
+          
+          <img src="./images/mongodb-logo.jpg" style="border: 0px;"/>
+          
+        </section>
+        
+        <section>
+          <section data-markdown>
+            ### About me
+          </section>
+          
+          <section data-markdown>
+            ### Some history
+            
+            - FFW PHP Team Lead (Sofia office).
+            - PHP developer for the last 9-10.
+          </section>
+          
+          <section data-markdown>
+            ### On the web...
+            
+            - drupal.org - https://www.drupal.org/u/ndobromirov
+            - GitHub - https://github.com/ndobromirov
+          </section>
+          
+          <section data-markdown>
+            ### Interests
+            
+            - System design and architecture.
+            - System & code **performance**.
+            - New technologies
+            - Games: *Diablo 2*, *Starcraft: BroodWar*
+            - Movies
+          </section>
+        </section>
+        
+        <section>
+          <section data-markdown>
+            ### About you
+            
+            - Any NoSQL experience?
+            - Any SQL experience? **:]**
+            - Memcached, Redis (K/V)
+            - Solr, ElasticSearch (documents)
+            - Graphs...
+            - Others?
+          </section>
+          
+        </section>
+        
+        <section>
+          <section data-markdown>
+            ### What is MongoDB
+
+            ```
+            MongoDB is an open-source document database that is highly
+            performant, highly availabille and horizontaly scallabile.
+            ```
+          </section>
+
+          <section data-markdown>
+            ### Breaking this down...
+
+            - Document database
+            - Highly performant
+            - Highly availabile
+            - Horizontaly scallable
+            
+            *... Enough teasers :D*
+          </section>
+          
+        </section>
+        
+        
+        <section>
+          <section data-markdown>
+            ### Database ?
+          </section>
+          
+          <section>
+            <h3>SQL (similarities)</h3>
+            <table>
+              <tr>
+                <td><strong>MySQL</strong></td>
+                <td>|</td>
+                <td><strong>MongoDB</strong></td>
+              </tr>
+              <tr>
+                <td>Database</td>
+                <td>|</td>
+                <td>Database</td>
+              </tr>
+              <tr>
+                <td>Table</td>
+                <td>|</td>
+                <td>Collecction</td>
+              </tr>
+              <tr>
+                <td>Row</td>
+                <td>|</td>
+                <td>Document</td>
+              </tr>
+              <tr>
+                <td>Column*</td>
+                <td>|</td>
+                <td>Property</td>
+              </tr>
+              <tr>
+                <td>Result set</td>
+                <td>|</td>
+                <td>Cursor</td>
+              </tr>
+            </table>
+          </section>
+          
+          <section data-markdown>
+            ### SQL (diffs)
+            
+            - ACID - compromises
+            - Data storage (BSON) - async
+            - Schema management (implicit)
+          </section>
+        </section>
+        
+        <section>
+          <section data-markdown>
+            ### Documents
+            
+            ```json
+            {
+              "_id" : ObjectId("5902297a258336daeccfaefd"),
+              "property1" : 1,
+              "property2" : "numer 2",
+              "property3" : ["a", "list", "of", "strings" ],
+              "property4" : ISODate("2017-04-27T17:25:14.337Z"),
+              "property5" : {
+                "another" : "object",
+                "that" : "can",
+                "contain" : "anything"
+              }
+            }
+            ```
+            
+          </section>
+          
+          
+          <section data-markdown>
+            ### Object ID (12 bytes)
+            
+            - 4-byte value unix timestamp,
+            - 3-byte machine identifier,
+            - 2-byte process id, and
+            - 3-byte counter (first is random)
+            
+            Example: **5902297a258336daeccfaefd**
+            
+            ... When storing MongoDB IDs - use **THIS** not strings!
+            
+          </section>
+          
+          <section data-markdown>
+            ### Other types
+            
+            - Dates
+            - Strings
+            - Integrs
+            - Arrays
+            - Objects
+            - ...[and many more](https://docs.mongodb.com/v3.0/reference/bson-types/)
+          </section>
+          
+          
+          <section data-markdown>
+            ### Demo
+          </section>
+          
+          
+          
+        </section>
+        
+        
+        <section>
+          <section data-markdown>
+          </section>
+          
+          <section data-markdown>
+          </section>
+        </section>
+
+        <section >
+          <h3>Recommended PHP extension</h3>
+          
+          
+          <img src="images/mongodb-php-drivers-architecture.png" />
+        </section>
 				<section>Slide 2</section>
 			</div>
 		</div>
