@@ -62,7 +62,7 @@
             - System design and architecture.
             - System & code **performance**.
             - New technologies
-            - Games: *Diablo 2*, *Starcraft: BroodWar*
+            - Classic PC games: *Starcraft: BroodWar*
             - Movies
           </section>
         </section>
@@ -127,27 +127,20 @@
                 <td>Document</td>
               </tr>
               <tr>
-                <td>Column*</td>
-                <td>|</td>
-                <td>Property</td>
-              </tr>
-              <tr>
                 <td>Result set</td>
                 <td>|</td>
                 <td>Cursor</td>
-              </tr>
-              <tr>
-                <td>Index</td>
-                <td>|</td>
-                <td>Index*</td>
               </tr>
             </table>
           </section>
           
           <section data-markdown>
-            ### vs SQL... Continued
+            ### vs SQL
+            ... Continued
             
-            - ACID - compromises
+            - Atomicity, Consistency (AC) - compromises
+            - Isolation, Durability (ID) - compromises
+            - Document references
             - Data storage (BSON) - async
             - Schema management (implicit)
           </section>
@@ -160,11 +153,11 @@
             ```json
             {
               "_id" : ObjectId("5902297a258336daeccfaefd"),
-              "property1" : 1,
-              "property2" : "numer 2",
-              "property3" : ["a", "list", "of", "strings" ],
-              "property4" : ISODate("2017-04-27T17:25:14.337Z"),
-              "property5" : {
+              "int" : 1,
+              "string" : "numer 2",
+              "array" : ["a", "list", "of", "strings" ],
+              "date" : ISODate("2017-04-27T17:25:14.337Z"),
+              "object" : {
                 "another" : "object",
                 "that" : "can",
                 "contain" : "anything"
@@ -172,18 +165,39 @@
             }
             ```
           </section>
+          
+          <section data-markdown>
+            ### Documents
+            ... in same collection :(
+            
+            ```json
+            {
+              "_id" : ObjectId("5902297a258336daeccfaefe"),
+              "int" : "1",
+              "string" : 2,
+              "array" : [
+                1, 
+                ISODate("2017-04-27T17:25:14.337Z"), 
+                "string", 
+                {val: 1}
+              ],
+              "date" : "2017-04-27T17:25:14.337Z"
+            }
+            ```
+            ...Nothing enforces the schema
+          </section>
 
           <section data-markdown>
             ### Object ID (12 bytes)
             
-            - 4-byte value unix timestamp,
-            - 3-byte machine identifier,
-            - 2-byte process id, and
+            For storing document ids!
+            
+            Example: **5902297a 258336 daec cfaefd**
+            - 4-byte timestamp value
+            - 3-byte machine id
+            - 2-byte process id
             - 3-byte counter (first is random)
             
-            Example: **5902297a258336daeccfaefd**
-            
-            ... When storing MongoDB IDs - use **THIS** not strings!
             
           </section>
 
@@ -274,7 +288,6 @@
             ### Highly scalable & available setup
             ![Highly available sharded cluster](images/mongo-cluster-schema-2.png)
           </section>
-          
         </section>
         
         <section >
@@ -284,22 +297,23 @@
             - **mongo** - legacy, dies with PHP 5.
             - **mongodb** - is the PHP 5/7+ recommended one.
           </section>
+          
           <section data-markdown>
-            ### Recommended PHP extension
+            ### Extension architecture
             
             ![mongodb PHP extension schema](images/mongodb-php-drivers-architecture.png)
           </section>
-          
         </section>
         
         <section>
           <section data-markdown>
-            ### Thank you!
-            
-            Questions?
+            ## Thank you!
+          </section>
+          
+          <section data-markdown>
+            ## Questions?
           </section>
         </section>
-
 			</div>
 		</div>
 
