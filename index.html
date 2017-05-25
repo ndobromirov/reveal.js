@@ -30,278 +30,159 @@
 		<div class="reveal">
 			<div class="slides">
 				<section >
-          <h2>NoSQL - MongoDB</h2> 
-          by <string>Nikolay Dobromirov</string>
-          
-          <img src="./images/mongodb-logo.jpg" style="border: 0px;"/>
-          
+          <h2>Cloud Applications</h2> 
+          guide by <string>Nikolay Dobromirov</string>
         </section>
         
         <section>
           <section data-markdown>
             ### About me
+            
+            - You know me from my last talk!
+            - [drupal.org](https://www.drupal.org/u/ndobromirov)
+            - [GitHub](https://github.com/ndobromirov)
           </section>
           
           <section data-markdown>
             ### Some history
             
-            - FFW PHP Team Lead (Sofia office).
-            - PHP developer for the last 10 years.
+            - Researching Google &amp; Amazon clouds.
+            - Working on an app hosted on Heroku.
+            - Local environment with docker.
+          </section>
+          
+        </section>
+        
+        <section>
+          <section data-markdown>
+            ### About you 
+            
+            - Multi-server projects?
+            - Multi-environment ones?
           </section>
           
           <section data-markdown>
-            ### On the web...
+            ### Why am I doing this talk?
             
-            - drupal.org - https://www.drupal.org/u/ndobromirov
-            - GitHub - https://github.com/ndobromirov
+            - Discuss common mistakes in software
+            - Lack of theory and too much practice :]
+            - Share some experience from the last year
+            - Hopefully get better
           </section>
-          
+        </section>
+        
+        
+        
+        <section>
           <section data-markdown>
-            ### Interests
+            ### [The 12 factored application](https://12factor.net)
             
-            - System design and architecture.
-            - System & code **performance**.
-            - New technologies
-            - Classic PC games: *Starcraft: BroodWar*
-            - Movies
+            - Set of rules between OS and app.
+            - Multiple pros and cons.
           </section>
         </section>
         
         <section>
           <section data-markdown>
-            ### About you
+            ### I. Codebase
             
-            Any **MongoDB** experience?
+            - Managed in version control
+            - 1 code-base is 1 application with  many deploys
+            
+            ![scheme](images/codebase-deploys.png)
           </section>
-        </section>
-        
-        <section>
+          
           <section data-markdown>
-            ### What is MongoDB
+            ### II. Dependencies
 
-            ```text
-            MongoDB is an open-source document database that is highly
-            performant, highly availabille and horizontaly scallabile.
-            ```
+            - Always explicit 
+            - Isolated
+            - Declarative
+            - PHP - composer
           </section>
+          
+          <section data-markdown>
+            ### III. Config
 
+            - Strict separation between code and config.
+            - Comes from environment - always!
+          </section>
+          
           <section data-markdown>
-            ### Breaking this down...
+            ### IV. Backing services
 
-            - Document database
-            - Highly performant
-            - Highly availabile
-            - Horizontaly scallable
+            - Any service the app consumes over the network
+            - No distinction between local or remote
             
-            *... Enough teasers :D*
-          </section>
-        </section>
-        
-        
-        <section>
-          <section data-markdown>
-            ### Database ?
-          </section>
-          
-          <section>
-            <h3>vs SQL</h3>
-            <table>
-              <tr>
-                <td><strong>MySQL</strong></td>
-                <td>|</td>
-                <td><strong>MongoDB</strong></td>
-              </tr>
-              <tr>
-                <td>Database</td>
-                <td>|</td>
-                <td>Database</td>
-              </tr>
-              <tr>
-                <td>Table</td>
-                <td>|</td>
-                <td>Collection</td>
-              </tr>
-              <tr>
-                <td>Row</td>
-                <td>|</td>
-                <td>Document</td>
-              </tr>
-              <tr>
-                <td>Result set</td>
-                <td>|</td>
-                <td>Cursor</td>
-              </tr>
-            </table>
-          </section>
-          
-          <section data-markdown>
-            ### vs SQL
-            ... Continued
+            ![scheme](images/attached-resources.png)
             
-            - Atomicity, Consistency (AC) - compromises
-            - Isolation, Durability (ID) - compromises
-            - Document references
-            - Data storage (BSON) - async
-            - Schema management (implicit)
           </section>
-        </section>
-        
-        <section>
           <section data-markdown>
-            ### Documents
-            
-            ```json
-            {
-              "_id" : ObjectId("5902297a258336daeccfaefd"),
-              "int" : 1,
-              "string" : "numer 2",
-              "array" : ["a", "list", "of", "strings" ],
-              "date" : ISODate("2017-04-27T17:25:14.337Z"),
-              "object" : {
-                "another" : "object",
-                "that" : "can",
-                "contain" : "anything"
-              }
-            }
-            ```
-          </section>
-          
-          <section data-markdown>
-            ### Documents
-            ... in same collection :(
-            
-            ```json
-            {
-              "_id" : ObjectId("5902297a258336daeccfaefe"),
-              "int" : "1",
-              "string" : 2,
-              "array" : [
-                1, 
-                ISODate("2017-04-27T17:25:14.337Z"), 
-                "string", 
-                {val: 1}
-              ],
-              "date" : "2017-04-27T17:25:14.337Z"
-            }
-            ```
-            ...Nothing enforces the schema
-          </section>
+            ### V. Build, release, run!
 
-          <section data-markdown>
-            ### Object ID (12 bytes)
+            - Strong separation between phases.
+            - Ordered by time or incremental.
+            - Immutable releases.
+            - Atomic and fast code reverts.
             
-            For storing document ids!
-            
-            Example: **5902297a 258336 daec cfaefd**
-            - 4-byte timestamp value
-            - 3-byte machine id
-            - 2-byte process id
-            - 3-byte counter (first is random)
-            
-            
+            ![scheme](images/release.png)
           </section>
+          <section data-markdown>
+            ### VI. Processes
 
-          <section data-markdown>
-            ### Other types
-            
-            - Dates
-            - Strings
-            - Integrs
-            - Arrays
-            - Objects
-            - ...[and many more](https://docs.mongodb.com/v3.0/reference/bson-types/)
+            - Stateless and Share-nothing
+            - Data persistence to a backing service
           </section>
+          
+          
+          <section data-markdown>
+            ### VII. Port binding
 
-          <section data-markdown>
-            ### Curors
-            
-            - Iterators over query results.
-            - Limit
-            - Skip
+            - The twelve-factor app is completely self-contained.
+            - It exposes a service through port binding (HTTP).
+            - Allows for the app to become a backing service.
           </section>
           
           <section data-markdown>
-            ## Demo
-            
-            ##### (CRUD)
-          </section>
-        </section>
-        
-        <section>
-          <section data-markdown>
-            ### Indexes 101
-            - _id
-            - Secondary ones
-            - Intersections
-          </section>
-          
-          <section data-markdown>
-            ### Index types
-            - Single field
-            - Compound (multi-column)
-            - Multiple (for arrays)
-            - Hash 
-            - Geospatial
-            - Text.
-          </section>
-          
-          <section data-markdown>
-            ### Index properties
-            - TTL
-            - Unique
-            - Sparse
-          </section>
-          
-          <section data-markdown>
-            ### Indexes - summary
-            - Collection scans.
-            - Creation time and locking
-            - Read / Write considerations.
-          </section>
-        </section>
-        
-        <section data-markdown>
-          ### Performance assumptions
-          
-          - Memory mapped files.
-          - Engines: MMAPv1, WiredTiger, Memory
-          - NB: Active working set size. *
-        </section>
-        
-        <section>
-          <section data-markdown>
-            ### High availability
-            - Master-slave replication
-            - Auto fail-over.
-            - Pros (safe)
-            - Cons (100% hardware overhead)
-          </section>
-          
-          <section data-markdown>
-            ### Horizontal scallability
-            - Auto sharding (sharding keys)
-            - Pros - linear cluster scalability.
-            - Cons - complexity.
-          </section>
-          
-          <section data-markdown>
-            ### Highly scalable & available setup
-            ![Highly available sharded cluster](images/mongo-cluster-schema-2.png)
-          </section>
-        </section>
-        
-        <section >
-          <section data-markdown>
-            ### What about PHP
+            ### VIII. Concurrency
 
-            - **mongo** - legacy, dies with PHP 5.
-            - **mongodb** - is the PHP 5/7+ recommended one.
+            - Based on the unix process model.
+            - Process types based on work type.
+            - Utilize OS native process manager.
+            
+            ![scheme](images/process-types.png)
           </section>
           
           <section data-markdown>
-            ### Extension architecture
+            ### IX. Disposability
             
-            ![mongodb PHP extension schema](images/mongodb-php-drivers-architecture.png)
+            - App’s processes are disposable!
+            - Minimize startup time 
+            - Shut down gracefully on SIGTERM
+            - Sudden death - transactions, etc.
+          </section>
+          
+          <section data-markdown>
+            ### X. Dev &amp; prod parity
+            
+            - Avoid gaps in: time, people, tools
+            - Use same backing services!
+            - Avoid adapters for backing services.
+          </section>
+          
+          <section data-markdown>
+            ### XI. Logs
+            
+            - Log streams should be streamed to ```stdout```
+            - Avoid app level log storage or routing code.
+          </section>
+          
+          <section data-markdown>
+            ### XII. Admin processes
+            
+            - One-off processes for maintenance.
+            - Same env as the log-running processes.
+            - Example: migrations, updates.
           </section>
         </section>
         
