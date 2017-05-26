@@ -55,13 +55,6 @@
         
         <section>
           <section data-markdown>
-            ### About you 
-            
-            - Multi-server projects?
-            - Multi-environment ones?
-          </section>
-          
-          <section data-markdown>
             ### Why am I doing this talk?
             
             - Discuss common mistakes in software
@@ -102,10 +95,11 @@
           </section>
           
           <section data-markdown>
-            ### III. Config
+            ### III. Configuration
 
             - Strict separation between code and config.
             - Comes from environment - always!
+            - Scalable (in deploys count)
           </section>
           
           <section data-markdown>
@@ -132,6 +126,7 @@
 
             - Stateless and Share-nothing
             - Data persistence to a backing service
+            - Avoid sticky sessions.
           </section>
           
           
@@ -184,6 +179,12 @@
             - Same env as the log-running processes.
             - Example: migrations, updates.
           </section>
+        </section>
+        
+        <section data-markdown>
+          ### How about Drupal
+          
+          - Could comply with all rules
         </section>
         
         <section>
