@@ -25,94 +25,184 @@
     <div class="reveal">
       <div class="slides">
         <section data-markdown>
-          ## Customer docker images
-          #### By Nikolay Dobromirov
+          # Fast Web UI 101
+
+          Nikolay Dobromirov
         </section>
 
         <section data-markdown>
-          ## What is docker?
+          ## About me :]
+          - PHP TL @ FFW Buldaria
+          - Performance enthusiast
         </section>
 
         <section data-markdown>
-          ## Eco system of docker
-          - Daemon
-          - Files
+          ## Overview
+          - Server (last time)
+          - Client
+        </section>
+
+        <section data-markdown>
+          ## Server
+          - Accepts a request
+          - Generates a response... Complicated...
+          - HTTP / Page cache.
+        </section>
+
+        <section data-markdown>
+          ## Client
+          - Requests resources from server.
+          - Fetches responses through a network
+          - Displays the resourses...
+        </section>
+
+        <section data-markdown>
+          ## Life of a page...
+          - Fetch document
+          - Parse document
+          - Fetch critical resources.
+          - Parse critical resources.
+          - And we have a page :D
+          - ...
+        </section>
+
+        <section data-markdown>
+          ## A critical resource.
+          - All CSS files
+          - Blocking JS in header.
+        </section>
+
+        <section data-markdown>
+          ## Fetching data:
+          - Connectiopn & Networking (101)
+          - Throughput
+          - RTT
+          - TCP Initial window size :(
+        </section>
+
+        <section data-markdown>
+          ## Parsing data
+          - HTML - DOM tree.
+          - CSS - rules tree.
+          - JS - script parsing & execution !!!
+          - Fonts - tricky
+          - Images - rendering.
+          - Videos [Oh hell no]
+        </section>
+
+        <section data-markdown>
+          ## UI Performance
+          - How fast we fetch stuff.
+          - How fast we displkay them.
+          - How many things :D
+        </section>
+
+        <section data-markdown>
+          ## Performance budget
+          - Networking
+          - Time
+          - Resources size
+          - Other limits (tree depth)
+        </section>
+
+        <section data-markdown>
+          ## Thinkgs to optimize:
+          - Document
+          - CSS
+          - JS
           - Images
-          - Containers
-          - Repository
-          - Orchestrator
+          - Fonts
+          - Many others...
         </section>
 
         <section data-markdown>
-          ## The Daemon
-        </section>
-
-        <section>
-          <section data-markdown>
-            ## Files
-            - Dockerfile
-            - .dockerignore
-          </section>
-
-          <section data-markdown>
-            ## Dockerfile
-            - Isolation for an applcation.
-            - One service per image (recommendation)
-          </section>
+          ## Ways to optimize
+          - Network  / Delivery
+          - Contents / structure
+          - Faking it
         </section>
 
         <section data-markdown>
-          ## Image
-          - Output of a docker file
-          - Filesystem layers
+          ## Optimizing document:
+          - Content reduction
+          - Compression / Cache / CDN
+          - Lazy Laoding (with AJAX / ESI)
+          - Big-Pipe (D8)
         </section>
 
         <section data-markdown>
-          ## Containers
-          - Running instance of an image
-          - Limits (CPU, RAM, Network)
-          - Ports & Volumes binding
-          - Ephemeral (disposable / stateless)
-            https://12factor.net/processes
+          ## Optimizing CSS:
+          - Use a pre-processor.
+          - File per component variation.
+          - Reduce unused rules (UnCSS).
+          - Inline critical CSS
+          - Lazy load the rest with JS.
+          - Aggregation - (HTTP 1.1 only)...
         </section>
 
         <section data-markdown>
-          ## Repository
-          - Collection of pre-build images
-          - Free public one - https://hub.docker.com
-          - Private alternatives.
+          ## Optimizing JS:
+          - Add only what you need.
+          - Minify / Uglify
+          - Load as late as possible.
+          - Load in ASYNC way (if possible)
+          - Stres, profile & optimize code.
+          - Aggrgates - (HTTP 1.1 only)
         </section>
 
         <section data-markdown>
-          ## Orchestrator
-          - Do we need them?
-          - docker-compose
-          - Docker swarm
-          - Kubernetes
-          - Others
+          ## Optimizing images:
+          - Image size (resolution + quality)
+          - Internals (format + meta-data).
         </section>
 
         <section data-markdown>
-          ## How to use it with Drupal
-          - Any docker LAMP stack - hard
-          - https://docs.amazee.io/
-          - https://docker4drupal.readthedocs.io/en/latest/
+          ## Optimizing images (hybrid):
+          - Srcset / picture - dedicated image for device.
+          - Lazy loading.
+          - Sprites (HTTP 1.1 only)
         </section>
 
         <section data-markdown>
-          ## Demos
-          - Simple image with PHP-CLI
-          - Project case (Dagrofa's Loyalty)
+          ## Optimizing images (faking it)
+          - Placeholder colors
+          - Placeholder thumbnails.
+          - Inlining a base64 file
         </section>
 
         <section data-markdown>
-          ## Questions / Discussion.
+          ## Fonts:
+          - Big problem many solutions.
+          - Google fonts VS performance :(
         </section>
 
         <section data-markdown>
-          ## Materials
-          - https://docs.docker.com/
-          - google :D
+          ## Performance budget
+          - Force a limit on things.
+          - Monitor the spendings
+          - Optimize only when needed.
+        </section>
+
+        <section data-markdown>
+          ## Tools (demos):
+          - https://www.webpagetest.org/
+          - https://developers.google.com/speed/pagespeed/insights/
+          - Browser dev tools - throtling
+          - Browser dev tools - profiler drupal.org
+        </section>
+
+        <section data-markdown>
+          ## Discussion:
+          - HTTP/3
+          - Decoupled web apps.
+        </section>
+
+        <section data-markdown>
+          # Questions
+        </section>
+
+        <section data-markdown>
+          # Thank you
         </section>
       </div>
     </div>
