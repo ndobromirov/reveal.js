@@ -25,180 +25,81 @@
     <div class="reveal">
       <div class="slides">
         <section data-markdown>
-          # Fast Web UI 101
-
-          Nikolay Dobromirov
+          # D8 VDK Case
+          By Nikolay Dobromirov.
         </section>
 
         <section data-markdown>
-          ## About me :]
-          - PHP TL @ FFW Buldaria
-          - Performance enthusiast
+          # About me
+          - TL @ FFW Sofia
+          - In FFW for the last 6+ years
+          - Performance enthusiast.
         </section>
 
         <section data-markdown>
-          ## Overview
-          - Server (last time)
-          - Client
+          ## VDK - History
+          - D7 - Domain access
+          - 100 sites and ~400 aliases
+          - Product / Content pages.
+          - Third party search service (Ankiro).
         </section>
 
         <section data-markdown>
-          ## Server
-          - Accepts a request
-          - Generates a response... Complicated...
-          - HTTP / Page cache.
+          ## Known issues
+          - Performance / Scalability
+          - Stability / Maintainability
+          - Sites separation
         </section>
 
         <section data-markdown>
-          ## Client
-          - Requests resources from server.
-          - Fetches responses through a network
-          - Displays the resourses...
+          ## new Architecture
+          - Drupal 8 multi-site
+          - React UI as a "multisite"
+          - JSON:API services
+          - Internal search server (Solr)
+          - SSO for super users
         </section>
 
         <section data-markdown>
-          ## Life of a page...
-          - Fetch document
-          - Parse document
-          - Fetch critical resources.
-          - Parse critical resources.
-          - And we have a page :D
-          - ...
+          ## New problems (1)
+          - Maps (google is expensive)
+          - CI
+          - Deployments
+          - Products database
+          - Designs and final UX
         </section>
 
         <section data-markdown>
-          ## A critical resource.
-          - All CSS files
-          - Blocking JS in header.
+          ## New problems (2)
+          - Performance (requirements).
+          - React - performance / stability.
+          - Cache - in decoupled context.
+          - Languages (selection)
         </section>
 
         <section data-markdown>
-          ## Fetching data:
-          - Connectiopn & Networking (101)
-          - Throughput
-          - RTT
-          - TCP Initial window size :(
+          ## Wins
+          - JSON:API speed-up.
+          - Maps with 10k+ pins on UI.
+          - Paragraphs-based data model.
+          - React-based decoupled Drupal theme.
+          - UI performance regression testing.
         </section>
 
         <section data-markdown>
-          ## Parsing data
-          - HTML - DOM tree.
-          - CSS - rules tree.
-          - JS - script parsing & execution !!!
-          - Fonts - tricky
-          - Images - rendering.
-          - Videos [Oh hell no]
+          ## Thanks to (the team)!
+          - @ptyo.stoyanov, @mario (not in FFW)
+          - @mariya, @rosen, @ndobromirov
+          - @khristov, @rumen
+          - @vili, @peter.dyrvig
         </section>
 
         <section data-markdown>
-          ## UI Performance
-          - How fast we fetch stuff.
-          - How fast we displkay them.
-          - How many things :D
+          ## Questions
         </section>
 
         <section data-markdown>
-          ## Performance budget
-          - Networking
-          - Time
-          - Resources size
-          - Other limits (tree depth)
-        </section>
-
-        <section data-markdown>
-          ## Thinkgs to optimize:
-          - Document
-          - CSS
-          - JS
-          - Images
-          - Fonts
-          - Many others...
-        </section>
-
-        <section data-markdown>
-          ## Ways to optimize
-          - Network  / Delivery
-          - Contents / structure
-          - Faking it
-        </section>
-
-        <section data-markdown>
-          ## Optimizing document:
-          - Content reduction
-          - Compression / Cache / CDN
-          - Lazy Laoding (with AJAX / ESI)
-          - Big-Pipe (D8)
-        </section>
-
-        <section data-markdown>
-          ## Optimizing CSS:
-          - Use a pre-processor.
-          - File per component variation.
-          - Reduce unused rules (UnCSS).
-          - Inline critical CSS
-          - Lazy load the rest with JS.
-          - Aggregation - (HTTP 1.1 only)...
-        </section>
-
-        <section data-markdown>
-          ## Optimizing JS:
-          - Add only what you need.
-          - Minify / Uglify
-          - Load as late as possible.
-          - Load in ASYNC way (if possible)
-          - Stres, profile & optimize code.
-          - Aggrgates - (HTTP 1.1 only)
-        </section>
-
-        <section data-markdown>
-          ## Optimizing images:
-          - Image size (resolution + quality)
-          - Internals (format + meta-data).
-        </section>
-
-        <section data-markdown>
-          ## Optimizing images (hybrid):
-          - Srcset / picture - dedicated image for device.
-          - Lazy loading.
-          - Sprites (HTTP 1.1 only)
-        </section>
-
-        <section data-markdown>
-          ## Optimizing images (faking it)
-          - Placeholder colors
-          - Placeholder thumbnails.
-          - Inlining a base64 file
-        </section>
-
-        <section data-markdown>
-          ## Fonts:
-          - Big problem many solutions.
-          - Google fonts VS performance :(
-        </section>
-
-        <section data-markdown>
-          ## Performance budget
-          - Force a limit on things.
-          - Monitor the spendings
-          - Optimize only when needed.
-        </section>
-
-        <section data-markdown>
-          ## Tools (demos):
-          - https://www.webpagetest.org/
-          - https://developers.google.com/speed/pagespeed/insights/
-          - Browser dev tools - throtling
-          - Browser dev tools - profiler drupal.org
-        </section>
-
-        <section data-markdown>
-          ## Discussion:
-          - HTTP/3
-          - Decoupled web apps.
-        </section>
-
-        <section data-markdown>
-          # Questions
+          ## Discussions
         </section>
 
         <section data-markdown>
